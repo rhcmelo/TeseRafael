@@ -1,0 +1,204 @@
+% --- -----------------------------------------------------------------
+% --- Elementos usados na Capa e na Folha de Rosto.
+% --- EXPRESSÕES ENTRE <> DEVERÃO SER COMPLETADAS COM A INFORMAÇÃO ESPECÍFICA DO TRABALHO
+% --- E OS SÍMBOLOS <> DEVEM SER RETIRADOS 
+% --- -----------------------------------------------------------------
+\autor{RAFAEL HEITOR CORREIA DE MELO} % deve ser escrito em maiúsculo
+
+\titulo{Uma Proposta de Extensão do \\Middleware Ginga-NCL para Interação Multimodal e \\Suporte Multiusuário em Ambientes Hipermídia}
+
+\instituicao{UNIVERSIDADE FEDERAL FLUMINENSE}
+
+\orientador{Aura Conci, D.Sc.}
+
+\local{NITERÓI}
+
+\data{2021} % ano da defesa
+
+
+\comentario{Tese de Doutorado apresentada ao Programa de Pós-Graduação em Computação da \mbox{Universidade} Federal Fluminense como requisito parcial para a obtenção do Grau de \mbox{Doutor em Computação}. Área de concentração: \mbox{Ciência da Computação}.} %preencha com a sua área de concentração
+
+
+% --- -----------------------------------------------------------------
+% --- Capa. (Capa externa, aquela com as letrinhas douradas)(Obrigatório)
+% --- ----------------------------------------------------------------
+\capa
+
+% --- -----------------------------------------------------------------
+% --- Folha de rosto. (Obrigatório)
+% --- ----------------------------------------------------------------
+\folhaderosto
+
+
+
+\pagestyle{ruledheader}
+\setcounter{page}{1}
+\pagenumbering{roman}
+
+% --- -----------------------------------------------------------------
+% --- Termo de aprovacao. (Obrigatorio)
+% --- ----------------------------------------------------------------
+\cleardoublepage
+\thispagestyle{empty}
+
+\vspace{-60mm}
+
+\begin{center}
+   {\large FABIO BARRETO}\\
+   \vspace{7mm}
+
+   Uma Proposta de Extensão do Middleware Ginga-NCL \\ para Interação Multimodal e Suporte Multiusuário em Ambientes Hipermídia\\
+   
+  \vspace{10mm}
+\end{center}
+
+\noindent
+\begin{flushright}
+\begin{minipage}[t]{8cm}
+
+Tese de Doutorado apresentada ao Programa de Pós-Graduação em Computação da Universidade Federal Fluminense como requisito parcial para a obtenção do \mbox{Grau} de Doutor em Computação. Área de concentração: \mbox{Sistemas de Computação.} %preencha com a sua área de concentração
+\end{minipage}
+\end{flushright}
+\vspace{1.0 cm}
+\noindent
+Aprovada em setembro de 2021. \\
+\begin{flushright}
+  \parbox{10cm}
+  {
+  \begin{center}
+  BANCA EXAMINADORA \\
+  \vspace{6mm}
+  \rule{11cm}{.1mm} \\
+    Profa. D.Sc. Aura Conci - Orientadora, UFF \\
+    \vspace{6mm}
+  \rule{11cm}{.1mm} \\
+     Prof. ---------, UFF \\
+   \vspace{6mm}
+
+  \rule{11cm}{.1mm} \\
+    Profa. -----------, UFF\\
+    \vspace{4mm}
+  \rule{11cm}{.1mm} \\
+    Prof. ------------, UFJF\\
+  \vspace{4mm}
+  \rule{11cm}{.1mm} \\
+   ------------------, USP \\
+  %\vspace{6mm}
+  \end{center}
+  }
+\end{flushright}
+\begin{center}
+ % \vspace{4mm}
+  Niterói \\
+  %\vspace{6mm}
+  2021
+
+\end{center}
+
+% --- -----------------------------------------------------------------
+% --- Dedicatoria.(Opcional)
+% --- -----------------------------------------------------------------
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{200mm}
+
+\begin{flushright}
+{\em 
+%Dedicatória(s): Elemento opcional onde o autor presta homenagem ou dedica seu trabalho (ABNT, 2005).
+Dedico este trabalho a minha esposa, Marina, e aos meus filhos, Artur e Daniel, que representam a imensidão do meu amor me impulsionando, sempre, na minha trajetória.
+}
+\end{flushright}
+\newpage
+
+
+% --- -----------------------------------------------------------------
+% --- Agradecimentos.(Opcional)
+% --- -----------------------------------------------------------------
+\pretextualchapter{Agradecimentos}
+\hspace{5mm}
+
+Agradeço a Deus por iluminar meu espírito durante toda minha vida. Agradeço a minha mãe por me incentivar sempre e por suas orações. 
+
+A minha mãe de coração Imaculada pelas orações e torcida. Ao meu pai de coração Mauro pela preocupação e apoio.
+
+Agradeço muito a minha orientadora Débora, seria injusto chamá-la apenas de orientadora. Débora transforma vidas, seu jeito radiante de conduzir tudo que faz é comovente e impossível não ser afetado.
+
+Não poderia deixar de agradecer aos meus amigos Marina Ivanov,  Eyre e Raphael Abreu pela grande ajuda e incentivo desde o início, principalmente nas tempestades de ideias e nos momentos de desânimo. Ao meu amigo do trabalho Mário João sempre com palavras de estímulo.
+
+À minha família, agradeço a compreensão pelas minhas ausências e minhas desculpas nos momentos de desânimo e irritabilidade onde não consegui lidar de maneira amável.
+
+
+% --- -----------------------------------------------------------------
+% --- Resumo em portugues.(Obrigatorio)
+% --- -----------------------------------------------------------------
+\begin{resumo}
+
+Avanços nas tecnologias de reconhecimento (por exemplo, reconhecimento de voz ou gesto) permitem novas interfaces de usuário para sistemas multimídia. É possível processar dois ou mais modos combinados de interação do usuário capturados por dispositivos de entrada ou sensores em tais sistemas. Além disso, os visualizadores podem usar diferentes dispositivos de entrada adaptados às suas necessidades especiais ou intenção particular. Outra característica interessante nesse sistemas é a capacidade de perceber e identificar diferentes usuários que estão participando da experiência multimídia. Existem tecnologias capazes de relacionar a interatividade do usuário de maneira única. No entanto, as plataformas padrão de TV Digital (\textit{Digital TV} -- DTV) não suportam totalmente interações multimodais nativamente muito menos a inteação muultiusuário. Portanto, este trabalho propõe uma extensão ao middleware DTV brasileiro Ginga-NCL para fornecer interação multimodal e multiusuário. A linguagem Nested Context Language (NCL) é estendida (denominada NCL 4.0) para suportar novos eventos de interação e múltiplos usuários, permitindo-lhes identificar qual usuário interagiu com um aplicativo de DTV. Como prova de conceito, foram desenvolvidos dois novos módulos Ginga-NCL que aderem à versão estendida proposta, um que suporta interação por voz e outro que suporta interação por olhar. Foram desenvolvidos vários aplicativos de DTV para avaliar a proposta e foi confirmado que a versão estendida não causa overhead no processamento de eventos Ginga-NCL. Finalmente, esta tese  também apresenta uma comparação entre a versão atual do NCL e a proposta de NCL 4.0 considerando o desempenho e o número de linhas de código da aplicação.
+
+{\hspace{-8mm} \bf{Palavras-chave}}: NCM, NCL, Ginga-NCL, NCL 4.0, Modelo Conceitual, Autoria Multimídia, Linguagem de Autoria, Interação Multimodal, Interação multiusuário, Aplicações multiusuário.
+
+\end{resumo}
+
+% --- -----------------------------------------------------------------
+% --- Resumo em lingua estrangeira.(Obrigatorio)
+% --- -----------------------------------------------------------------
+\begin{abstract}
+
+Advances in recognition technologies (e.g., speech or gesture recognition)  enable  new  user  interfaces  for  multimedia  systems.  It  is  possible  toprocess  two  or  more  combined  modes  of  user  interaction  captured  by  inputdevices or sensors in such systems. Moreover, viewers can use different inputdevices tailored to their special needs or particular intention. Another interesting feature in these systems is perceiving and identifying different users who are participating in the multimedia experience. There are technologies capable of relating user interactivity uniquely. However, DigitalTV (DTV) standard platforms do not fully support multimodal and multiuser interactionsnatively. Therefore, this work proposes an extension to the Brazilian Ginga-NCL DTV middleware to provide multimodal interaction. The Nested ContextLanguage (NCL) is extended (called NCL 4.0) to support new interaction events and multipleusers,  allowing  them  to  identify  which  user  has  interacted  with  a  DTV  ap-plication. As a proof of concept, we developed two new Ginga-NCL modulesthat adhere to our extended version, one that supports voice interaction andanother that supports gaze interaction. We developed several DTV applica-tions to evaluate our proposal and confirmed that our extended version doesnot cause overhead on Ginga-NCL event processing. Finally, this paper alsopresents  a  comparison  between  the  current  NCL  version  and  our  NCL 4.0 proposal considering performance and number of application code lines.
+
+{\hspace{-8mm} \bf{Keywords}}: NCM, NCL, Ginga-NCL, NCL 4.0, Conceptual Model, Multimedia Authoring, Authoring Language, Multimodal Interaction, Multiuser Interaction, Multiuser Applications.
+
+\end{abstract}
+
+% --- -----------------------------------------------------------------
+% --- Lista de figuras.(Opcional)
+% --- -----------------------------------------------------------------
+%\cleardoublepage
+\listoffigures
+
+
+% --- -----------------------------------------------------------------
+% --- Lista de tabelas.(Opcional)
+% --- -----------------------------------------------------------------
+\cleardoublepage
+%\label{pag:last_page_introduction}
+\listoftables
+\cleardoublepage
+
+% --- -----------------------------------------------------------------
+% --- Lista de abreviatura.(Opcional)
+%Elemento opcional, que consiste na relação alfabética das abreviaturas e siglas utilizadas no texto, seguidas das %palavras ou expressões correspondentes grafadas por extenso. Recomenda-se a elaboração de lista própria para cada %tipo (ABNT, 2005).
+% --- ----------------------------------------------------------------
+\cleardoublepage
+\pretextualchapter{Lista de Abreviaturas e Siglas}
+\begin{tabular}{lcl}
+AHM & : & Amsterdam Hypermedia Model;\\
+CIDL & : & Control Information Description Language;\\
+GUI & : & Graphical User Interface;\\
+IIDL & : & Interaction Interface Description Language;\\
+IoT & : & Internet Of Things;\\
+KMS & : & Knowledge Management System;\\
+MUI & : & Multimodal User Interface;\\
+MultiSEM & : & Multimedia Sensory Effect Model;\\
+NCL & : & Nested Context Language;\\
+NCM & : & Nested Context Model;\\
+PROMIS & : & Problem Oriented Medical Information System;\\
+RDF & : & Resource Description Framework;\\
+RoSE & : & Representation of Sensory Effects;\\
+SEDL & : & Sensory Effect Description Language;\\
+SEM & : & Sensory Effect Metadata;\\
+SEVino & : & Sensory Effect Video Annotation;\\
+SMIL & : & Synchronized Multimedia Integration Language;\\
+SMURF & : & Sensible Media aUthoRing Factory;\\
+SRGS & : & Speech Recognition Grammar Specification;\\
+TEA & : & Transtorno do Espectro Autista;\\
+
+
+\end{tabular}
+% --- -----------------------------------------------------------------
+% --- Sumario.(Obrigatorio)
+% --- -----------------------------------------------------------------
+\pagestyle{ruledheader}
+\tableofcontents
+
+

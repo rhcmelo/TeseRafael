@@ -1,0 +1,145 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pacote para definição de linguagens e estilo de código para listagens
+% As seguintes linguagens são definidas:
+%  - ncl
+%  - smil
+%  - xtp (xtemplate)
+%  - maude
+% 
+% os ambientes:
+%  - ncl
+%  - xtp
+%  - maude
+% são definidos, permitindo adicionar código nessas linguagens no meio do texto.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{listlang}
+\NeedsTeXFormat{LaTeX2e}
+% \RequirePackage[usenames]{color}
+\RequirePackage{listings}
+
+
+%------------------- Definição de Marcação para XTemplate/NCL ------------------
+\definecolor{tag}{rgb}{0.01,0.28,1.0}
+\definecolor{att}{rgb}{0.4,0.6,0.8}
+\definecolor{string}{rgb}{0,0.42,0.24}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{myhighlight1}{rgb}{0.63,0.79,0.65}
+\definecolor{myhighlight2}{rgb}{0.96,0.76,0.76}
+\definecolor{LtGray}{rgb}{0.95,0.95,0.95}
+
+
+% some magic tricks
+\newenvironment{hl@env}
+{\begin{lrbox}{\@tempboxa}\color{string}}
+{\end{lrbox}\color{string}"\usebox{\@tempboxa}"}
+
+\newcommand\mystring{%
+  \begin{hl@env}\bgroup\aftergroup\hl@endenv%
+}
+\def\hl@endenv{%
+  \end{hl@env}%   
+  \egroup
+}
+\lstdefinelanguage{latexspace}{
+  moredelim=**[is][\mystring]{``}{''}
+}
+
+
+\lstdefinelanguage{ncl}{
+  alsoletter={<>/=},
+  keywords={/>, >,<,xml, <assessmentStatement, </assessmentStatement>, <attributeAssessment, </attributeAssessment>, <area,</area>, <bind, </bind>, <bindRule,</bindRule> <bindParam,</bindParam>, <body>, </body>, <causalConnector, </causalConnector>, <compositeRule, </compositeRule>, <compoundAction, </compoundAction>, <compoundCondition, </compoundCondition>, <compoundStatement, </compoundStatement>, <connectorBase>, </connectorBase>, <connectorParam,</connectorParam>, <context, </context>, <descriptor, </descriptor>, <descriptorBase>, </descriptorBase>, <descriptorParam,</descriptorParam>, <descriptorSwitch, </descriptorSwitch>, <head>, </head>, <importBase, <importNCL, <importedDocumentBase, </importedDocumentBase>, <link, </link>, <linkParam>, <mapping>, <media, </media>, <meta>, <metadata>, <ncl, </ncl>, <port, <port>, <property>, <region, </region>, <regionBase>,</regionBase>, <rule>, <ruleBase, </ruleBase>, <simpleAction, <simpleCondition, <switch, </switch>, <switchPort, </switchPort>, <transition>, <transitionBase, </transitionBase>, <userBase>, </userBase>, <effect, <userProfile,</userProfile>, <userAgent,</userAgent>, <property, <valueAssessment>, <valueAssessment , <bindParam, }, keywords={[2] version=, encoding=, actionType=, alias=, attributeType=, baseId=, begin=, borderColor=, borderWidth=, bottom=, by=, comparator=, component=, content=, constituent=, coords=, defaultComponent=, defaultDescriptor=, defaultOrder=, delay=, descriptor=, description=, device=, direction=, documentURI=, dur=, end=, endProgress=, eventType=, explicitDur=, frequency=, faceExpression=, fadeColor=, first=, focusBorderColor=, focusBorderTransparency=, focusBorderWidth=, focusIndex=, focusSelSrc=, focusSrc=, freeze=, height=, horRepeat=, id=, increment=, instance=, interface=, isNegated=, key=, label=, last=, left=, max=, mediaType=, min=, moveDown=, moveLeft=, moveRight=, moveUp=, name=, owner=, scent=, user=, offset=, operator=, order=, parent=, perspective=, player=, position=, profile=, qualifier=, rate=, refer=, region=, location=, repeat=, repeatDelay=, right=, role=, rule=, sensorId=, selBorderColor=, src=, startProgress=, subType=, text=, title=, top=, transIn=, transOut=, transition=, type=, userAgent=, value=, var=, vertRepeat=, width=, xconnector=, xmlns=, zIndex=},
+  morecomment=[s]{<!--}{-->},
+  morestring=[b]",
+  morestring=[d]'
+}
+
+
+\lstdefinelanguage{xtp}{
+  language=ncl,
+  morekeywords={<component, </component>, <connector, <connectorBase>, </connectorBase>, <constraint, <constraints>, </constraints>, <extends, <for-each, </for-each>, <port, <templateBase>, </templateBase>, <variable, </variable>, <vocabulary>, </vocabulary>, <xtemplate, </xtemplate>, <xt, </xt>, <format, <cell, <item, <focus, <layout, </layout>},
+  morekeywords={[2] maxOccurs=, minOccurs=, overwriteConstraints=, select=, xlabel=, xtype=, xtemplate=, layout=, align=, hspace=, vspace=},
+}
+
+
+\lstdefinelanguage{smil}{
+  alsoletter={<>/=},
+  keywords={/>, >, <animation, </animation>, <audio, </audio>, <body, </body>, <excl, </excl>, <head, <head>, </head>, <img, </img>, <par, </par>, <ref, </ref>, <seq, </seq>, <smil, <smil>, </smil>, <switch, </switch>, <text, </text>, <textstream, </textstream>, <video, </video>},
+  keywords={[2] begin=, dur=, endsync=, id=, src=},
+  morecomment=[s]{<!--}{-->},
+  morestring=[b]",
+  morestring=[d]'
+}
+
+
+\lstdefinelanguage{maude}{
+  language=latexspace,
+  alsoletter={<>-=:},
+  keywords={mod, is, endm, fmod, endfm, inc, including, pr, protecting, sort, sorts, subsort, op, ops, eq, rl, ceq, crl, if, crl, var, vars, view, from, to, endv, <, :, ->, =, =>},
+  keywords={[2] ctor, id, assoc, comm},
+  morecomment=[l]{---},
+  morecomment=[s]{---(}{)},
+  morestring=[b]"
+}
+
+
+%------------------- Estilo Padrão de Código -----------------------------------
+\lstset{ %
+  backgroundcolor=\color{LtGray},  % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\tiny,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\itshape\color{mygray},     % comment style
+  % deletekeywords={...},          % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=lines,                     % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\bfseries\color{tag},% keyword style
+  keywordstyle={[2]\color{att}},   % keyword style
+  % language=XTemplate,              % the language of the code
+  % morekeywords={*,...},          % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{string},      % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  % title=\lstname                 % show the filename of files included with \lstinputlisting; also try caption instead of title
+  % columns=flexible,
+  mathescape=true,                 % permite inserir codigo em mathmode 
+  % linewidth=\textwidth,
+  % floatplacement={tbp}
+  literate=%
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 %
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1 %
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1 %
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1 %
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1 %
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 %
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1 %
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1, %
+  %     {"}{{\ttfamily"}}1         % straight double quotes
+  %     {'}{\ttfamily'}1           % straight single quotes
+  %    {``}{"}1          % straight double quotes
+  %    {''}{"}1,         % straight double quotes
+  %     {~}{{$\neg$}}1 %            \neg
+  %     % {-}{{-}}1 %                 prevent ``-'' being replaced by math minus
+  %     {<=}{{\tiny$\leq$}}1 %      \leq
+  %     {>=}{{\tiny$\geq$}}1 %      \geq
+  %     {~=}{{\tiny$\neq$}}1 %      \neq
+  %     {delta}{{\tiny$\Delta$}}1%  \Delta
+  %     {iend}{{\fontfamily{pcr}\selectfont end}}3% end when indexing matrix elements
+}
+
+
+\lstnewenvironment{maude}[1][]{\lstset{language=maude,#1}}{}
+\lstnewenvironment{ncl}[1][]{\lstset{language=ncl,#1}}{}
+\lstnewenvironment{xtp}[1][]{\lstset{language=xtp,#1}}{}
+
+
+\endinput
