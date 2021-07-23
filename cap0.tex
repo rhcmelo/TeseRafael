@@ -5,7 +5,7 @@
 % --- -----------------------------------------------------------------
 \autor{RAFAEL HEITOR CORREIA DE MELO} % deve ser escrito em maiúsculo
 
-\titulo{Uma Proposta de Extensão do \\Middleware Ginga-NCL para Interação Multimodal e \\Suporte Multiusuário em Ambientes Hipermídia}
+\titulo{Uma Proposta de uso de Dispositivo Háptico \\para Treinamento de Anestesia raquidiana}
 
 \instituicao{UNIVERSIDADE FEDERAL FLUMINENSE}
 
@@ -44,10 +44,10 @@
 \vspace{-60mm}
 
 \begin{center}
-   {\large FABIO BARRETO}\\
+   {\large RAFAEL HEITOR CORREIA DE MELO}\\
    \vspace{7mm}
 
-   Uma Proposta de Extensão do Middleware Ginga-NCL \\ para Interação Multimodal e Suporte Multiusuário em Ambientes Hipermídia\\
+   Uma Proposta de uso de Dispositivo Háptico \\para Treinamento de Anestesia raquidiana\\
    
   \vspace{10mm}
 \end{center}
@@ -61,7 +61,7 @@ Tese de Doutorado apresentada ao Programa de Pós-Graduação em Computação da
 \end{flushright}
 \vspace{1.0 cm}
 \noindent
-Aprovada em setembro de 2021. \\
+Aprovada em MÊS de 2021. \\
 \begin{flushright}
   \parbox{10cm}
   {
@@ -79,10 +79,10 @@ Aprovada em setembro de 2021. \\
     Profa. -----------, UFF\\
     \vspace{4mm}
   \rule{11cm}{.1mm} \\
-    Prof. ------------, UFJF\\
+    Prof. ------------, SIGLAUniv\\
   \vspace{4mm}
   \rule{11cm}{.1mm} \\
-   ------------------, USP \\
+   ------------------, SIGLAUniv \\
   %\vspace{6mm}
   \end{center}
   }
@@ -105,7 +105,7 @@ Aprovada em setembro de 2021. \\
 \begin{flushright}
 {\em 
 %Dedicatória(s): Elemento opcional onde o autor presta homenagem ou dedica seu trabalho (ABNT, 2005).
-Dedico este trabalho a minha esposa, Marina, e aos meus filhos, Artur e Daniel, que representam a imensidão do meu amor me impulsionando, sempre, na minha trajetória.
+Dedico este trabalho a minha esposa, Evelyn, que sempre me apoiou na direção das minhas conquistas e ao meu filho, Rafael, que, ao chegar me apresentou uma nova forma de amar. 
 }
 \end{flushright}
 \newpage
@@ -117,15 +117,15 @@ Dedico este trabalho a minha esposa, Marina, e aos meus filhos, Artur e Daniel, 
 \pretextualchapter{Agradecimentos}
 \hspace{5mm}
 
-Agradeço a Deus por iluminar meu espírito durante toda minha vida. Agradeço a minha mãe por me incentivar sempre e por suas orações. 
+Agradeço a Deus por me mostrar sempre os caminhos, mesmo nos momentos em que parece que isso não vai acontecer. 
 
-A minha mãe de coração Imaculada pelas orações e torcida. Ao meu pai de coração Mauro pela preocupação e apoio.
+Aos meus pais Julio e Dayse pela preocupação e apoio. Aos meus irmãos Leonardo e Julia pela amizade e companheirismo essenciais nos momentos difíceis.
 
-Agradeço muito a minha orientadora Débora, seria injusto chamá-la apenas de orientadora. Débora transforma vidas, seu jeito radiante de conduzir tudo que faz é comovente e impossível não ser afetado.
+Agradeço muito a minha orientadora Aura, que mesmo nos momentos de desânimo conseguiu me trazer, em palavras, motivação para seguir em frente.
 
-Não poderia deixar de agradecer aos meus amigos Marina Ivanov,  Eyre e Raphael Abreu pela grande ajuda e incentivo desde o início, principalmente nas tempestades de ideias e nos momentos de desânimo. Ao meu amigo do trabalho Mário João sempre com palavras de estímulo.
+Ao amigo André que foi essencial em parte dessa caminhada.
 
-À minha família, agradeço a compreensão pelas minhas ausências e minhas desculpas nos momentos de desânimo e irritabilidade onde não consegui lidar de maneira amável.
+À minha família, agradeço a compreensão pelas minhas ausências e minhas desculpas nos momentos de desânimo.
 
 
 % --- -----------------------------------------------------------------
@@ -133,9 +133,10 @@ Não poderia deixar de agradecer aos meus amigos Marina Ivanov,  Eyre e Raphael 
 % --- -----------------------------------------------------------------
 \begin{resumo}
 
-Avanços nas tecnologias de reconhecimento (por exemplo, reconhecimento de voz ou gesto) permitem novas interfaces de usuário para sistemas multimídia. É possível processar dois ou mais modos combinados de interação do usuário capturados por dispositivos de entrada ou sensores em tais sistemas. Além disso, os visualizadores podem usar diferentes dispositivos de entrada adaptados às suas necessidades especiais ou intenção particular. Outra característica interessante nesse sistemas é a capacidade de perceber e identificar diferentes usuários que estão participando da experiência multimídia. Existem tecnologias capazes de relacionar a interatividade do usuário de maneira única. No entanto, as plataformas padrão de TV Digital (\textit{Digital TV} -- DTV) não suportam totalmente interações multimodais nativamente muito menos a inteação muultiusuário. Portanto, este trabalho propõe uma extensão ao middleware DTV brasileiro Ginga-NCL para fornecer interação multimodal e multiusuário. A linguagem Nested Context Language (NCL) é estendida (denominada NCL 4.0) para suportar novos eventos de interação e múltiplos usuários, permitindo-lhes identificar qual usuário interagiu com um aplicativo de DTV. Como prova de conceito, foram desenvolvidos dois novos módulos Ginga-NCL que aderem à versão estendida proposta, um que suporta interação por voz e outro que suporta interação por olhar. Foram desenvolvidos vários aplicativos de DTV para avaliar a proposta e foi confirmado que a versão estendida não causa overhead no processamento de eventos Ginga-NCL. Finalmente, esta tese  também apresenta uma comparação entre a versão atual do NCL e a proposta de NCL 4.0 considerando o desempenho e o número de linhas de código da aplicação.
+As anestesias raquidianas são procedimentos cegos que dependem do sentimento do médico no decorrer da inserção da agulha para correta identificação do local de aplicação do líquido anestésico. Em grande parte dos centros de treinamento a primeira experiência tátil do médico em treino tende a ser praticada em pacientes reais. Esta prática, apesar de ser efetuada sob supervisão direta, traz riscos para estes pacientes e possíveis inseguranças aos aprendizes. Técnicas alternativas de uso de \textit{phantoms} e cadáveres no treinamento oferecem uma pequena representatividade em relação às variações de pacientes reais. 
+Este trabalho propõe o desenvolvimento de um ambiente virtual para simulação do procedimento que envolve anestesias raquidianas. Propõem-se considerar o procedimento de punção com \textit{feedback} tátil e visual usando técnicas de auto treinamento. As sensações táteis do médico em treinamento são simuladas no protótipo através da integração com dispositivo háptico. A geração e visualização dinâmica de modelos de corpos de pacientes baseados em altura e peso também faz parte do processo. A parte do protótipo que envolve a detecção de diferentes sensações de perfuração de tecidos foi validado por alunos da computação. O acesso a membros da comunidade médica foi comprometido pela realidade da pandemia. Finalmente, esta tese  também apresenta um modelo adaptável de um corpo de gestante que possui modelagem de todas as camadas desde a pele das costas até os ossos da coluna vertebral. As camadas de tecido mais variáveis foram modeladas de forma dinâmica de forma a permitir uma maior variabilidade de cenários de treinamento. Esta modelagem pode ainda ser utilizada em outros procedimentos que envolvam a área e camadas modeladas desenvolvidas. 
 
-{\hspace{-8mm} \bf{Palavras-chave}}: NCM, NCL, Ginga-NCL, NCL 4.0, Modelo Conceitual, Autoria Multimídia, Linguagem de Autoria, Interação Multimodal, Interação multiusuário, Aplicações multiusuário.
+{\hspace{-8mm} \bf{Palavras-chave}}: Dispositivo háptico, Treinamento médico, Anestesia raquidiana, Ambiente virtual.
 
 \end{resumo}
 
